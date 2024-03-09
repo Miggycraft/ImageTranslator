@@ -1,6 +1,9 @@
 package DataTranslator;
 
+import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 /**
  * 
@@ -10,6 +13,23 @@ import java.util.ArrayList;
  */
 
 public class Translator {
+	public Color[] toRGB(int[] arr) {
+		ArrayList<Integer> fixedArr = (ArrayList<Integer>) Arrays.stream(arr).boxed().collect(Collectors.toList());
+		ArrayList<Color> colorArr = new ArrayList<Color>();
+		while(fixedArr.size() % 3 != 0) {
+			fixedArr.add(0);
+		}
+		
+		for (int i = 0; i < fixedArr.size();) {
+			int r = fixedArr.get(i++);
+			int g = fixedArr.get(i++);
+			int b = fixedArr.get(i++);
+			colorArr.add(new Color(r,g,b)); // out of bounds is impossible.. right?
+		}
+
+		return colorArr.toArray(Color[]::new);
+	}
+	
 	public int[] toHex(Object o) throws Exception{
 		String b = Data.toBinary(o);
 		ArrayList<String> binaryArr = new ArrayList<String>();
