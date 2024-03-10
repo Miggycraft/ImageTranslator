@@ -1,5 +1,5 @@
 package Database;
 
-public class Imagebase {
+public class ImageBase {
 	// get it cuz Database, imagebase? ahaha
 }
