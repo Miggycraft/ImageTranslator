@@ -34,6 +34,15 @@ public class Translator {
 		return colorArr.toArray(Color[]::new);
 	}
 	
+	public static void readChar(int r, int g, int b) throws Exception {
+		String sR = Data.toBinary(r);
+		String sG = Data.toBinary(g);
+		String sB = Data.toBinary(b);
+		System.out.print((char)(Integer.parseInt(sR,2)));
+		System.out.print((char)(Integer.parseInt(sG,2)));
+		System.out.print((char)(Integer.parseInt(sB,2)));
+	}
+	
 	public static int[] toHex(Object o){
 		String b = null;
 		try {

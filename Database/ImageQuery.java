@@ -16,4 +16,13 @@ public class ImageQuery {
 		 * ti.paintString(s) converts the given text to color and then paint it.
 		 */
 	}
+	
+	public void read() {
+		/*
+		 * better, read(String tableName)
+		 * TableImage ti = findOrMake(tableName) explaiend above
+		 * 
+		 * ti.read() //prints the given string
+		 */
+	}
 }
