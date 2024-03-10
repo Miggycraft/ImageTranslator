@@ -9,7 +9,7 @@ public class ImageData {
 	public ImageData(int x, int y) {
 		this.x = x;
 		this.y = y;
-		name = "Output";
+		name = "Table_DEFAULT";
 		directory = "\\";
 	}
 	
