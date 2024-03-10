@@ -2,12 +2,12 @@ package DataTranslator;
 
 /**
  * pleaes understand that the Datatype translated to binary supports
- *	ASCII encoding only, not UTF KAY YAWA MAN! :3
+ * ASCII encoding only, not UTF KAY YAWA MAN! :3 
  */
 
 public class Data {
 	final static Object[] SUPPORTED_CLASS = 
-		{String.class, Integer.class, Long.class};
+		{String.class, Integer.class, Long.class}; //INTEGER AND LONG CLASS ARE STUPID, better if we set to string only!
 	static int classIndex = -1;
 	
 	public static String toBinary(Object o) throws Exception {

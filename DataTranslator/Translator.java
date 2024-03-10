@@ -78,7 +78,7 @@ public class Translator {
 		return result.stream().mapToInt(i -> i).toArray();
 	}
 	
-	private static String compensate(String b) { // my pp is not smol...
+	private static String compensate(String b) {
 		while(b.length() < 8) {
 			b += '0';
 		}

@@ -1,6 +1,14 @@
 package Database;
 
+import ImageDrawer.ImageData;
+import ImageDrawer.TableImage;
+
 public class ImageQuery {
+	private ImageBase ib;
+	
+	public ImageQuery(ImageBase ib) {
+		this.ib = ib;
+	}
 	/*
 	 * ImageBase ib = new ImageBase...
 	 * ImageQuery iq = new ImageQuery(ib) parang connected sila
@@ -8,21 +16,13 @@ public class ImageQuery {
 	 * 
 	 */
 	
-	public void write(String s) {
-		/*
-		 * better, write(String s, String tableName)
-		 * TableImage ti = findOrMake(tableName) finds tableName else create one
-		 * 
-		 * ti.paintString(s) converts the given text to color and then paint it.
-		 */
+	public void write(String s, String tableName) {
+		TableImage ti = ib.findOrMake(tableName);
+		ti.paintString(s);
 	}
 	
-	public void read() {
-		/*
-		 * better, read(String tableName)
-		 * TableImage ti = findOrMake(tableName) explaiend above
-		 * 
-		 * ti.read() //prints the given string
-		 */
+	public void read(String tableName) {
+		TableImage ti = ib.findOrMake(tableName);
+		ti.read();
 	}
 }

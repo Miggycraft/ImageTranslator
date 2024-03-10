@@ -35,10 +35,11 @@ public class TableImage {
 		}
 	}
 	
-	public void init() throws IOException {
+	public TableImage init() throws IOException {
 		image = new BufferedImage(id.getX(), id.getY(), BufferedImage.TYPE_INT_ARGB);
 		
 		ImageIO.write(image, "png", new File(id.getName() + ".png"));
+		return this;
 	}
 	
 	public void paintString(String s) {
@@ -70,12 +71,7 @@ public class TableImage {
 		}
 	}
 	
-	public TableImage findOrMake() {
-		// TODO
-		return null;
-	}
-	
-	public void read() throws Exception {
+	public void read(){
 		if (image == null) {
 			throw new NullPointerException("Image is null, try init() first");
 		}
@@ -93,7 +89,12 @@ public class TableImage {
 			        int red =   (clr & 0x00ff0000) >> 16;
 			        int green = (clr & 0x0000ff00) >> 8;
 			        int blue =   clr & 0x000000ff;
-			        Translator.readChar(red, green, blue);
+			        try {
+			        	Translator.readChar(red, green, blue);			        	
+			        }
+			        catch(Exception ex) {
+			        	//throws an error when reading an empty color i think? maybe no need to fix this
+			        }
 				}
 			}
 		}
