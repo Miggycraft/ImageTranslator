@@ -1,6 +1,7 @@
 import java.util.Arrays;
 
 import DataTranslator.*;
+import Database.*;
 import ImageDrawer.*;
 
 public class Main {
@@ -8,14 +9,19 @@ public class Main {
 //		String s = "Test string";
 //		Translator t = new Translator();
 //		System.out.println(t.toRGB(t.toHex(12345))[0]);
-		TableImage ti = new TableImage(new ImageData(25,25));
-		ti.setImage("Table_DEFAULT");
+		ImageBase ib = new ImageBase();
+		ib.setName("ImageBase");
+		ImageQuery iq = new ImageQuery(ib);
+		iq.read("image_name");
+//		iq.write("Test post afsdfasfdsfasfds", "image_name");
+//		TableImage ti = new TableImage(new ImageData(25,25));
+////		ti.setImage("Table_DEFAULT");
 //		ti.init();
 //		ti.paintString("Hello my name is kyle\r\n"
 //				+ "blah blah blah blah\r\n"
 //				+ "lorem ipsum\r\n"
 //				+ "wow amazing");
-		ti.read();
+//		ti.read();
 	}
 }
 

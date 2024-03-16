@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+
 import DataTranslator.Translator;
 
 import javax.imageio.ImageIO;
@@ -27,6 +28,11 @@ public class TableImage {
 		return id;
 	}
 	
+	public TableImage setImage(BufferedImage image) {
+		this.image = image;
+		return this;
+	}
+	
 	public void setImage(String name) {
 		try {
 			image = ImageIO.read(new File(name + ".png"));
@@ -38,7 +44,6 @@ public class TableImage {
 	public TableImage init() throws IOException {
 		image = new BufferedImage(id.getX(), id.getY(), BufferedImage.TYPE_INT_ARGB);
 		
-		ImageIO.write(image, "png", new File(id.getName() + ".png"));
 		return this;
 	}
 	
@@ -65,7 +70,9 @@ public class TableImage {
 		}			
 		
 		try {
-			ImageIO.write(image, "png", new File(id.getName() + ".png"));
+			if (!new File(id.getDirectory()).exists()) // guard clause for checking folder exists
+				new File(id.getDirectory()).mkdir();
+			ImageIO.write(image, "png", new File(id.getDirectory() + id.getName() + ".png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -86,9 +93,9 @@ public class TableImage {
 				}
 				else {
 			        int clr = image.getRGB(x, y);
-			        int red =   (clr & 0x00ff0000) >> 16;
+			        int red = (clr & 0x00ff0000) >> 16;
 			        int green = (clr & 0x0000ff00) >> 8;
-			        int blue =   clr & 0x000000ff;
+			        int blue = clr & 0x000000ff;
 			        try {
 			        	Translator.readChar(red, green, blue);			        	
 			        }

@@ -10,7 +10,7 @@ public class ImageData {
 		this.x = x;
 		this.y = y;
 		name = "Table_DEFAULT";
-		directory = "\\";
+		directory = "";
 	}
 	
 	public ImageData(int x, int y, String name) {
@@ -45,15 +45,21 @@ public class ImageData {
 		return name;
 	}
 	
-	public void setName(String name) {
+	public ImageData setName(String name) {
 		this.name = name;
+		return this;
 	}
 	
-	public String getDirectory() {
+	public String getTrueDirectory() {
 		return directory;
 	}
 	
-	public void setDirectory(String directory) {
+	public String getDirectory() {
+		return System.getProperty("user.dir") + "\\" + directory + "\\";
+	}
+	
+	public ImageData setDirectory(String directory) {
 		this.directory = directory;
+		return this;
 	}
 }
