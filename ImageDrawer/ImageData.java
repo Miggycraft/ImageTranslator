@@ -41,6 +41,12 @@ public class ImageData {
 		this.y = y;
 	}
 	
+	public ImageData setXY(int x, int y) {
+		this.x = x;
+		this.y = y;
+		return this;
+	}
+	
 	public String getName() {
 		return name;
 	}

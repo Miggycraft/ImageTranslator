@@ -6,6 +6,10 @@ import ImageDrawer.TableImage;
 public class ImageQuery {
 	private ImageBase ib;
 	
+	public void setDimension(int x, int y) {
+		ib.setDimension(x, y); // lol
+	}
+	
 	public ImageQuery(ImageBase ib) {
 		this.ib = ib;
 	}

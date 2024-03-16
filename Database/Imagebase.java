@@ -14,6 +14,8 @@ public class ImageBase {
 	private String name; //used for directory
 	private String DEFAULT_PATHWAY = System.getProperty("user.dir");
 	private ArrayList<TableImage> dataArr = new ArrayList<TableImage>();
+	private int x = 100;
+	private int y = 100;
 	
 	public ImageBase() {
 		this("default");
@@ -88,16 +90,17 @@ public class ImageBase {
 				// should be impossible because exists already checks for this.
 				e.printStackTrace();
 				System.exit(1);
+			} catch (NullPointerException e) {
+				throw new NullPointerException("Image is corrupted!");
 			}
 		}
-		
 		/* 
 		 * --- MAKE ---
 		 * Default values: 100,100 px
 		 * Table_DEFAULT
 		 */
 		try {
-			TableImage temp = new TableImage(new ImageData(100,100)).init();
+			TableImage temp = new TableImage(new ImageData(this.x, this.y)).init();
 			temp.getImageData().setDirectory(name);
 			temp.getImageData().setName(tableName);
 			dataArr.add(temp);
@@ -116,5 +119,10 @@ public class ImageBase {
 	
 	public String getName() {
 		return name;
+	}
+	
+	public void setDimension(int x, int y) {
+		this.x = x;
+		this.y = y;
 	}
 }

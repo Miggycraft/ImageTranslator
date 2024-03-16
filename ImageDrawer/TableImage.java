@@ -43,7 +43,6 @@ public class TableImage {
 	
 	public TableImage init() throws IOException {
 		image = new BufferedImage(id.getX(), id.getY(), BufferedImage.TYPE_INT_ARGB);
-		
 		return this;
 	}
 	
@@ -55,7 +54,6 @@ public class TableImage {
 		}
 		
 		Graphics g = image.getGraphics();
-		
 		Color[] RGBArr = Translator.toRGB(s);
 		int i = 0;
 		for (int y = 0; y < id.getY(); y++) {
