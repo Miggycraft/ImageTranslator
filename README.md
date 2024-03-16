@@ -21,6 +21,11 @@ iq.write("Hello, this is a basic text!");
 iq.write("Hello, this is a basic text! but there is a given name here!", "TABLE_NAME");
 ```
 
+### to set dimensions for your table
+```
+iq.setDimension(x, y); // default will be 100 x 100 
+```
+
 ### to read your TableImages
 ```
 iq.read("TABLE_NAME");
