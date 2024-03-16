@@ -11,16 +11,53 @@ import ImageDrawer.ImageData;
 import ImageDrawer.TableImage;
 
 public class ImageBase {
-	private String name = "default"; //used for directory
+	private String name; //used for directory
 	private String DEFAULT_PATHWAY = System.getProperty("user.dir");
 	private ArrayList<TableImage> dataArr = new ArrayList<TableImage>();
+	
+	public ImageBase() {
+		this("default");
+	}
+	
+	public ImageBase(String name) {
+		this.name = name;
+		init();
+	}
 	
 	private String getPath() {
 		return DEFAULT_PATHWAY + "\\" + name;
 	}
 	
+	private void init() {
+		File f = new File(getPath() + "\\");
+		
+		if (!f.exists())
+			return; // no content inside
+		
+		for (File item: f.listFiles()) {
+			try {
+				String name = item.getName();
+				if ("png".equals(name.substring(name.length() -3, name.length()))){
+					BufferedImage bimg = ImageIO.read(new File(getPath() + "\\" + name));
+					int width = bimg.getWidth();
+					int height = bimg.getHeight();
+					ImageData temp = new ImageData(width, height, this.name, name);
+					dataArr.add(new TableImage(temp).setImage(bimg));
+				}
+			}
+			catch(StringIndexOutOfBoundsException x) {
+				continue; // for file names less than 3
+			}
+			catch(Exception x) {
+//				x.printStackTrace();
+				continue; // for cases na png ang final but not actually png
+			}
+		}
+	}
+	
 	private boolean exists(ImageData im, String tableName) {
-		return (im.getName() == tableName && im.getTrueDirectory() == name);
+		tableName += ".png";
+		return (im.getName().equals(name) && im.getTrueDirectory().equals(tableName));
 	}
 	
 	private boolean exists(String tableName) { // file search
@@ -28,7 +65,7 @@ public class ImageBase {
 		return f.exists();
 	}
 	
-	public TableImage findOrMake(String tableName) {		
+	public TableImage findOrMake(String tableName) {	
 		for (TableImage ti: dataArr) { // iteration over existing lists
 			if (exists(ti.getImageData(), tableName)) {
 				ImageData temp = ti.getImageData();
@@ -40,7 +77,7 @@ public class ImageBase {
 		}
 		
 		
-		if (exists(tableName)) {
+		if (exists(tableName)) { // init() already does but for runtime to, if implemented lol
 			try {
 				BufferedImage bimg = ImageIO.read(new File(getPath() + "\\" + tableName + ".png"));
 				int width = bimg.getWidth();
@@ -75,11 +112,6 @@ public class ImageBase {
 	
 	public void add(TableImage im) {
 		dataArr.add(im);
-	}
-	
-	public void setName(String name) {
-		// TODO add conficlting database name
-		this.name = name;
 	}
 	
 	public String getName() {

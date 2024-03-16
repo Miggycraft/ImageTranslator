@@ -9,12 +9,6 @@ public class ImageQuery {
 	public ImageQuery(ImageBase ib) {
 		this.ib = ib;
 	}
-	/*
-	 * ImageBase ib = new ImageBase...
-	 * ImageQuery iq = new ImageQuery(ib) parang connected sila
-	 * iq.write("string here or something blah2", "Table_1") it stores/access from table_1
-	 * 
-	 */
 	
 	public void write(String s, String tableName) {
 		TableImage ti = ib.findOrMake(tableName);
