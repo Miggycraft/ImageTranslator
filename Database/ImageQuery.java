@@ -1,5 +1,7 @@
 package Database;
 
+import java.util.ArrayList;
+
 import ImageDrawer.ImageData;
 import ImageDrawer.TableImage;
 
@@ -19,8 +21,8 @@ public class ImageQuery {
 		ti.paintString(s);
 	}
 	
-	public void read(String tableName) {
+	public ArrayList<String> read(String tableName) {
 		TableImage ti = ib.findOrMake(tableName);
-		ti.read();
+		return ti.read();
 	}
 }
