@@ -78,13 +78,12 @@ public class ImageBase {
 			}
 		}
 		
-		
 		if (exists(tableName)) { // init() already does but for runtime to, if implemented lol
 			try {
 				BufferedImage bimg = ImageIO.read(new File(getPath() + "\\" + tableName + ".png"));
 				int width = bimg.getWidth();
 				int height = bimg.getHeight();
-				ImageData temp = new ImageData(width, height, name, tableName);
+				ImageData temp = new ImageData(width, height, tableName, name);
 				return new TableImage(temp).setImage(bimg);
 			} catch (IOException e) {
 				// should be impossible because exists already checks for this.

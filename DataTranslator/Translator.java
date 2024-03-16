@@ -39,9 +39,14 @@ public class Translator {
 		String sR = Data.toBinary(r);
 		String sG = Data.toBinary(g);
 		String sB = Data.toBinary(b);
-		output.append((char)(Integer.parseInt(sR,2)));
-		output.append((char)(Integer.parseInt(sG,2)));
-		output.append((char)(Integer.parseInt(sB,2)));
+		try {
+			output.append((char)(Integer.parseInt(sR,2)));
+			output.append((char)(Integer.parseInt(sG,2)));
+			output.append((char)(Integer.parseInt(sB,2)));			
+		}
+		catch(NumberFormatException x) {
+			// skips since invalid 0
+		}
 		return output.toString();
 	}
 	

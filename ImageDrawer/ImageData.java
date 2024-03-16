@@ -3,8 +3,8 @@ package ImageDrawer;
 public class ImageData {
 	private int x;
 	private int y;
-	private String name;
-	private String directory;
+	private String name; // name of the file (.png)
+	private String directory; // also the database name
 	
 	public ImageData(int x, int y) {
 		this.x = x;
