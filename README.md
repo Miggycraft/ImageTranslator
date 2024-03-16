@@ -15,11 +15,12 @@ iq.write("Hello, this is a basic text!");
 iq.write("Hello, this is a basic text! but there is a given name here!", "TABLE_NAME");
 ```
 
-### to create a table for your imageBase
+### to read a table from your imageBase
 ```
-iq.write("Hello, this is a basic text!");
-iq.write("Hello, this is a basic text! but there is a given name here!", "TABLE_NAME");
+ArrayList<String> datas = iq.read("TABLE_NAME");
+datas.get(0);
 ```
+make sure that the given table_name exists else nothing returns,
 
 ### to set dimensions for your table
 ```
